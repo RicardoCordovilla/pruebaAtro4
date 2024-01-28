@@ -1,21 +1,85 @@
 ---
-title: "About";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css'
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "About";
+
+const identity = {
+    firstName: "Ricardo",
+    country: "Ecuador",
+    occupation: "Escritor técnico",
+    hobbies: ["fotografia", "observación de aves", "peñarol"],
+};
+
+const skills = [
+    {
+        name: "HTML",
+        level: 5,
+    },
+    {
+        name: "CSS",
+        level: 4,
+    },
+    {
+        name: "JavaScript",
+        level: 3,
+    },
+    {
+        name: "PHP",
+        level: 2,
+    },
+    {
+        name: "Python",
+        level: 1,
+    },
+];
+
+const happy = true;
+const finished = false;
+const goals = 3;
+const skillcolor = "#1a8";
 ---
 
-<html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
-    </head>
-    <body>
-        <a href="/">Home</a>
-        <a href="/about">Acerca de</a>
-        <a href="/blog">Blog</a>
+<BaseLayout 
+    pageTitle={pageTitle}
+    pageDescription="This is the about page"
+>
+<p>This is the about section of the website.</p>
 
-        <h1>About</h1>
-        <p>This is the about section of the website.</p>
-    </body>
-</html>
+<p>
+    Aquí hay un poco de información sobre mí:
+    <ul>
+        <li>Nombre: {identity.firstName}</li>
+        <li>País: {identity.country}</li>
+        <li>Ocupación: {identity.occupation}</li>
+        <li>Hobbies: {identity.hobbies.join(", ")}</li>
+    </ul>
+
+    <p>Estas son mis habilidades:</p>
+    <ul>
+        {
+            skills.map((skill) => (
+                <li class="skill">
+                    {skill.name} (nivel {skill.level})
+                </li>
+            ))
+        }
+    </ul>
+</p>
+
+{happy ? <p>Estoy feliz</p> : <p>Estoy triste</p>}
+
+{finished && <p>Terminé</p>}
+
+{goals > 0 && <p>Tengo {goals} metas</p>}
+
+<style>
+    .skill {
+        color: {skillcolor};
+    }
+</style>
+
+</BaseLayout>
+```

@@ -1,0 +1,25 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const pageTitle = "Home";
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <Header />
+        <h1>{pageTitle}</h1>
+        <slot />
+
+        <Footer />
+        <script>
+            import "../scripts/menu.js";
+        </script>
+    </body>
+</html>
